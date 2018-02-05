@@ -2,26 +2,28 @@ let initWebGL = () => {
     let VSText;
     let FSText;
 
-    loadTextResource('/shaders/vertexShader.glsl')
+    fetch('/shaders/vertexShader.glsl')
+        .then(r => r.text())
         .then((result) => {
             VSText = result;
-            return loadTextResource('/shaders/fragmentShader.glsl');
+            return fetch('/shaders/fragmentShader.glsl');
         })
+        .then(r => r.text())
         .then((result) => {
         FSText = result;
         return StartWebGL(VSText, FSText);
         })
         .catch((error) => {
-          console.warn('Error with loading ' + error);
+          console.error('Error with loading ' + error);
       }) 
 }
 
-let startWebGL = (vertexShaderText, fragmentShaderText) => {
+let StartWebGL = (vertexShaderText, fragmentShaderText) => {
     let canvas = document.getElementById('webgl-canvas');
     let gl = canvas.getContext('webgl');
 
     if (!gl) {
-        console.warn('No Support WebGL');
+        console.error('No Support WebGL');
         return;
     }
 
