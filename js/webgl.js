@@ -27,7 +27,13 @@ let StartWebGL = (vertexShaderText, fragmentShaderText) => {
         return;
     }
 
-    console.log(gl);
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+var vertexShader = gl.createShader(gl.VERTEX_SHADER);
+var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+
+//gl.shaderSource(vertexShader,);
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
