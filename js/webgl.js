@@ -32,7 +32,20 @@ let StartWebGL = (vertexShaderText, fragmentShaderText) => {
 var vertexShader = gl.createShader(gl.VERTEX_SHADER);
 var fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 
-//gl.shaderSource(vertexShader,);
+gl.shaderSource(vertexShader, vertexShaderText);
+gl.shaderSource(fragmentShader, fragmentShaderText);
+
+gl.compileShader(vertexShader);
+
+if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS)) {
+    console.error('Error', gl.getShaderInfoLog(vertexShader));
+}
+
+gl.compileShader(fragmentShader);
+
+if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
+    console.error('Error', gl.getShaderInfoLog(fragmentShader));
+}
 
 };
 
