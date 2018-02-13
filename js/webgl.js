@@ -47,6 +47,17 @@ if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS)) {
     console.error('Error', gl.getShaderInfoLog(fragmentShader));
 }
 
+let program = gl.createProgram();
+gl.attachShader(program, vertexShader);
+gl.attachShader(program, fragmentShader);
+
+gl.linkProgram(program);
+gl.validateProgram(program);
+
+// if(!gl.getProgramParameter()) {
+
+// }
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
