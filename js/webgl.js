@@ -78,8 +78,15 @@ gl.validateProgram(program);
       2,
       gl.FLOAT,
       gl.FALSE,
-      2 * Float32Array,
+      2 * Float32Array.BYTES_PER_ELEMENT,
+      0 * Float32Array.BYTES_PER_ELEMENT
   );
+    gl.enableVertexAttribArray(positionAttribLocation);
+
+    gl.clearColor(0.75, 0.9, 1.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(program);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
 
 };
 
