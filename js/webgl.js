@@ -54,9 +54,20 @@ gl.attachShader(program, fragmentShader);
 gl.linkProgram(program);
 gl.validateProgram(program);
 
-// if(!gl.getProgramParameter()) {
+ if(!gl.getProgramParameter(parameter, gl.VALIDATE_STATUS)) {
+    console.log('Error', gl.getProgramInfoLog(program));
 
-// }
+    return;
+  }
+
+  let vertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+
+  let vertexArray = [
+      0.0, 0.5,
+      0.5, -0.5,
+      -0.5, -0.5
+  ];
 
 };
 
