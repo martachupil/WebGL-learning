@@ -69,6 +69,18 @@ gl.validateProgram(program);
       -0.5, -0.5
   ];
 
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexArray), gl.STATIC_DRAW);
+
+  let positionAttribLocation = gl.getAttribLocation(program, 'vertexPosition');
+
+  gl.vertexAttribPointer(
+      positionAttribLocation,
+      2,
+      gl.FLOAT,
+      gl.FALSE,
+      2 * Float32Array,
+  );
+
 };
 
 document.addEventListener('DOMContentLoaded', () => {
